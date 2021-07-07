@@ -11,8 +11,8 @@ export default function Moncompte() {
     return (
         <View>
 			<Text>Bienvenue {user.firstname||"test"}</Text>
-			<Text>Bienvenue {user.name||"test"}</Text>
-			<Text>Bienvenue {user.email||"test"}</Text>
+			<Text> {user.name||"test"}</Text>
+			<Text> {user.email||"test"}</Text>
         </View>
     )
 }
