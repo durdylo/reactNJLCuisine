@@ -41,7 +41,7 @@ export default function App() {
     );
   }
   function AccountStackScreen() {
-   
+
     return (
       <SettingsStack.Navigator>
         <SettingsStack.Screen name="Mon compte" component={Moncompte} />
@@ -56,31 +56,41 @@ export default function App() {
       </SettingsStack.Navigator>
     );
   }
+  function AdminStackScreen(){
+      return (
+        <SettingsStack.Navigator>
+          <SettingsStack.Screen name="Admin" component={Admin} />
+        </SettingsStack.Navigator>
+      );
+    
+  }
   console.log(user.email);
   if(user.email !== undefined){
-    if(user.id_role === 0){
+    console.log(user);
+    if(user.role === '0'){
       return (
         <UserContext.Provider value={userContextValue}>
           <NavigationContainer>
             <Tab.Navigator>
               <Tab.Screen name="home" component={HomeStackScreen}/>
               <Tab.Screen name="account" component={AccountStackScreen}/>
-              <Tab.Screen name="admin" component={Admin}/>
+              <Tab.Screen name="Admin" component={AdminStackScreen}/>
             </Tab.Navigator>
           </NavigationContainer>
         </UserContext.Provider>
       );
     }
-    return (
-      <UserContext.Provider value={userContextValue}>
-        <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen name="home" component={HomeStackScreen}/>
-            <Tab.Screen name="account" component={AccountStackScreen}/>
-          </Tab.Navigator>
-        </NavigationContainer>
-      </UserContext.Provider>
-    );
+      return (
+        <UserContext.Provider value={userContextValue}>
+          <NavigationContainer>
+            <Tab.Navigator>
+              <Tab.Screen name="home" component={HomeStackScreen}/>
+              <Tab.Screen name="account" component={AccountStackScreen}/>
+            </Tab.Navigator>
+          </NavigationContainer>
+        </UserContext.Provider>
+      );
+  
   }else{
     return (
       <UserContext.Provider value={userContextValue}>
