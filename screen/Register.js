@@ -1,45 +1,54 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
 import { UserContext } from '../App';
-import { userStorageKey } from '../service/userService';
 
-export default function Login({navigation}) {
+export default function Register({navigation}) {	
+	const context = useContext(UserContext);
 
 	const [message, setMessage] = useState('');
+	const [name, setName] = useState('');
+	const [firstName, setFirstName] = useState('');
 	const [email, setEmail] = useState('');
-	const [pwd, setPwd] = useState('');
-	const context = useContext(UserContext);
+	const [password, setPassword] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
 
 	const handlePress = () => {
 		const data = {
+			name: name,
+			firstname: firstName,
 			email: email,
-			password: pwd
+			password: password,
+			confirmpassword: confirmPassword
 		};
-		const url = 'http://localhost/projetCubes3/Models/user/selectUser.php'
+		const url = 'http://localhost/projetCubes3/Models/user/insertUser.php'
 		axios.post(url, data)
 		.then((response)=> {
 			const result = response.data;
 			if (result.state == "success") {	
-				console.log("ok");
-				AsyncStorage.setItem(userStorageKey, JSON.stringify(result.data));
-				context.setUser(result.data);
-				navigation.replace('home');
+				navigation.replace('login');
 			}
 			else {
 				console.log("pas ok");
 				setMessage(result.message);
 			}
 		});
-	}
-
-	const registerPress = () => {
-		navigation.replace('register');
-	}
+	};
 
 	return (
 		<View>
+			<TextInput
+				onChangeText = {setName}
+				value = {name}
+				placeholder="Nom"
+				style = {[styles.base, styles.border]}
+			/>
+			<TextInput
+				onChangeText = {setFirstName}
+				value = {firstName}
+				placeholder="Prénom"
+				style = {[styles.base, styles.border]}
+			/>
 			<TextInput
 				onChangeText = {setEmail}
 				value = {email}
@@ -47,9 +56,15 @@ export default function Login({navigation}) {
 				style = {[styles.base, styles.border]}
 			/>
 			<TextInput
-				onChangeText = {setPwd}
-				value = {pwd}
+				onChangeText = {setPassword}
+				value = {password}
 				placeholder="Mot de passe"
+				style = {[styles.base, styles.border]}
+			/>
+			<TextInput
+				onChangeText = {setConfirmPassword}
+				value = {confirmPassword}
+				placeholder="Confirmez votre mot de passe"
 				style = {[styles.base, styles.border]}
 			/>
 			<Text
@@ -57,13 +72,8 @@ export default function Login({navigation}) {
 			>{message}
 			</Text>
 			<Button
-				title = "Connexion"
+				title = "Créer mon compte"
 				onPress = {handlePress}
-				style = {styles.base}
-			/>
-			<Button
-				title = "Créer un compte"
-				onPress = {registerPress}
 				style = {styles.base}
 			/>
 		</View>
