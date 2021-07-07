@@ -48,6 +48,7 @@ export default function Login({navigation}) {
 				onChangeText = {setPwd}
 				value = {pwd}
 				placeholder="Mot de passe"
+				secureTextEntry={true}
 				style = {[styles.base, styles.border]}
 			/>
 			<Text

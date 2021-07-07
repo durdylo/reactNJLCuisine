@@ -58,12 +58,14 @@ export default function Register({navigation}) {
 			<TextInput
 				onChangeText = {setPassword}
 				value = {password}
+				secureTextEntry={true}
 				placeholder="Mot de passe"
 				style = {[styles.base, styles.border]}
 			/>
 			<TextInput
 				onChangeText = {setConfirmPassword}
 				value = {confirmPassword}
+				secureTextEntry={true}
 				placeholder="Confirmez votre mot de passe"
 				style = {[styles.base, styles.border]}
 			/>
