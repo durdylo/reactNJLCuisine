@@ -22,13 +22,11 @@ export default function Login({navigation}) {
 		.then((response)=> {
 			const result = response.data;
 			if (result.state == "success") {	
-				console.log("ok");
 				AsyncStorage.setItem(userStorageKey, JSON.stringify(result.data));
 				context.setUser(result.data);
 				navigation.replace('home');
 			}
 			else {
-				console.log("pas ok");
 				setMessage(result.message);
 			}
 		});

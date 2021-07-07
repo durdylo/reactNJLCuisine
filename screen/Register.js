@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
-import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, View, ScrollView } from 'react-native';
 import { UserContext } from '../App';
 
 export default function Register({navigation}) {	
@@ -36,7 +36,7 @@ export default function Register({navigation}) {
 	};
 
 	return (
-		<View>
+		<ScrollView>
 			<TextInput
 				onChangeText = {setName}
 				value = {name}
@@ -76,7 +76,7 @@ export default function Register({navigation}) {
 				onPress = {handlePress}
 				style = {styles.base}
 			/>
-		</View>
+		</ScrollView>
 	);
 }
 
