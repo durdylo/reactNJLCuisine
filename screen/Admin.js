@@ -7,7 +7,7 @@ export default function Admin({ navigation }) {
 	const { user } = useContext(UserContext);
 	if (!user || user == '')
 		navigation.replace('login');
-	else if (user.role != 0) {
+	else if (user.role != 1) {
 		return (
 			<View>
 				<Text style={styles.error}>You are not an admin</Text>

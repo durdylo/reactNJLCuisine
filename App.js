@@ -67,7 +67,7 @@ export default function App() {
   console.log(user.email);
   if(user.email !== undefined){
     console.log(user);
-    if(user.role === '0'){
+    if(user.role === '1'){
       return (
         <UserContext.Provider value={userContextValue}>
           <NavigationContainer>
