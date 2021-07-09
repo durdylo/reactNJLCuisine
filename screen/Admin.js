@@ -23,7 +23,7 @@ export default function Admin({ navigation }) {
 	}, []);
 
 	const getUsers = () => {
-		const url = 'http://localhost/projetCubes3/Models/user/selectAllUsers.php'
+		const url = 'http://localhost/web/projetCubes3/Models/user/selectAllUsers.php'
 		axios.post(url, null)
 			.then((response) => {
 				const result = response.data;
@@ -41,7 +41,7 @@ export default function Admin({ navigation }) {
 			id_user: id_user
 		};
 		
-		const url = 'http://localhost/projetCubes3/Models/recipe/selectRecipe.php'
+		const url = 'http://localhost/web/projetCubes3/Models/recipe/selectRecipe.php'
 		axios.post(url, data)
 			.then((response) => {
 				const result = response.data;
@@ -62,7 +62,7 @@ export default function Admin({ navigation }) {
 		const data = {
 			id: item.id
 		};
-		const url = 'http://localhost/projetCubes3/Models/user/deleteUser.php';
+		const url = 'http://localhost/web/projetCubes3/Models/user/deleteUser.php';
 		axios.post(url, data)
 			.then((response) => {
 				const result = response.data;
@@ -81,7 +81,7 @@ export default function Admin({ navigation }) {
 		const data = {
 			id: item.id
 		};
-		const url = 'http://localhost/projetCubes3/Models/recipe/deleteRecipe.php';
+		const url = 'http://localhost/web/projetCubes3/Models/recipe/deleteRecipe.php';
 		axios.post(url, data)
 			.then((response) => {
 				const result = response.data;
